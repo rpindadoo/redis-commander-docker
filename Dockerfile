@@ -14,7 +14,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install packages.
 RUN apt-get update
-RUN apt-get install -y python python-dev python-pip python-virtualenv wget
+RUN apt-get install -y curl nano python python-dev python-pip python-virtualenv wget
 
 # Define working directory.
 WORKDIR /tmp

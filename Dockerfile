@@ -17,11 +17,9 @@ ENV TERM xterm
 RUN apt-get update
 RUN apt-get install -y curl nano python python-dev python-pip python-virtualenv wget
 
-# Define working directory.
-WORKDIR /tmp
-
 # Compile node from source.
 RUN \
+  cd /tmp && \
   wget http://nodejs.org/dist/node-latest.tar.gz && \
   tar xvzf node-*.tar.gz && \
   rm -f node-*.tar.gz && \
@@ -37,12 +35,6 @@ RUN npm install -g redis-commander
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# Define working directory.
-WORKDIR /data
-
-# Define mountable directories.
-VOLUME ["/data"]
 
 # Define the entrypoint script.
 ENTRYPOINT ["redis-commander"]

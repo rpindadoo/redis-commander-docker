@@ -15,7 +15,7 @@ ENV TERM xterm-color
 
 # Install packages.
 RUN apt-get update
-RUN apt-get install -y curl nano python python-dev python-pip python-virtualenv wget
+RUN apt-get install -y curl git nano python python-dev python-pip python-virtualenv wget
 
 # Compile node from source.
 RUN \
@@ -31,7 +31,7 @@ RUN \
   rm -rf node-v*
 
 # Install node packages.
-RUN npm install -g redis-commander
+RUN npm install -g joeferner/redis-commander
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

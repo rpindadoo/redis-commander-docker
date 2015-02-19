@@ -14,24 +14,21 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm-color
 
 # Install packages.
-RUN apt-get update
-RUN apt-get install -y curl git nano python python-dev python-pip python-virtualenv wget
-
-# Compile node from source.
 RUN \
-  cd /tmp && \
-  wget http://nodejs.org/dist/node-latest.tar.gz && \
-  tar xvzf node-*.tar.gz && \
-  rm -f node-*.tar.gz && \
-  cd node-* && \
-  ./configure && \
-  CXX="g++ -Wno-unused-local-typedefs" make && \
-  CXX="g++ -Wno-unused-local-typedefs" make install && \
-  cd .. && \
-  rm -rf node-v*
+  apt-get update && \
+  apt-get install -y \
+    curl \
+    git \
+    nano \
+    wget
+
+# Add node repository
+RUN \
+  curl -sL https://deb.nodesource.com/setup | bash - && \
+  apt-get install -y nodejs
 
 # Install node packages.
-RUN npm install -g joeferner/redis-commander
+RUN npm install -g redis-commander
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

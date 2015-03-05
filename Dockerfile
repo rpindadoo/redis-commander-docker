@@ -1,5 +1,5 @@
 #
-# Redis commander dockerfile
+# Redis commander docker image
 #
 # http://github.com/tenstartups/redis-commander-docker
 #
@@ -14,13 +14,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm-color
 
 # Install packages.
-RUN \
-  apt-get update && \
-  apt-get install -y \
-    curl \
-    git \
-    nano \
-    wget
+RUN apt-get update && apt-get -y install curl git nano wget
 
 # Install nodejs from official source.
 RUN \

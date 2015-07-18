@@ -5,7 +5,7 @@
 #
 
 # Pull base image.
-FROM debian:jessie
+FROM alpine:latest
 
 MAINTAINER Marc Lennox <marc.lennox@gmail.com>
 
@@ -15,18 +15,12 @@ ENV \
   TERM=xterm-color
 
 # Install packages.
-RUN apt-get update && apt-get -y install curl git nano wget
-
-# Install nodejs from official source.
 RUN \
-  curl -sL https://deb.nodesource.com/setup | bash - && \
-  apt-get install -y nodejs
+  apk --update add bash curl nano nodejs wget && \
+  rm /var/cache/apk/*
 
 # Install node packages.
 RUN npm install -g redis-commander
-
-# Clean up APT when done.
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Define the entrypoint script.
 ENTRYPOINT ["redis-commander"]

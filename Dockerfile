@@ -17,7 +17,7 @@ ENV \
 # Install packages.
 RUN \
   apk --update add bash curl nano nodejs wget && \
-  rm /var/cache/apk/*
+  rm -rf /var/cache/apk/*
 
 # Install node packages.
 RUN npm install -g redis-commander

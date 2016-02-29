@@ -1,5 +1,4 @@
-redis-commander-docker
-======================
+# Redis Commander Docker Image
 
 A [Docker](https://www.docker.com/) container for [Redis Commander](https://github.com/joeferner/redis-commander).
 

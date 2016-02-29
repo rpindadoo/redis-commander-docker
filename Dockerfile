@@ -4,19 +4,13 @@
 # http://github.com/tenstartups/redis-commander-docker
 #
 
-# Pull base image.
-FROM alpine:latest
+FROM tenstartups/alpine:latest
 
 MAINTAINER Marc Lennox <marc.lennox@gmail.com>
 
-# Set environment.
-ENV \
-  DEBIAN_FRONTEND=noninteractive \
-  TERM=xterm-color
-
 # Install packages.
 RUN \
-  apk --update add bash curl nano nodejs wget && \
+  apk --update add nodejs && \
   rm -rf /var/cache/apk/*
 
 # Install node packages.

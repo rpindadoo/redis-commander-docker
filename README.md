@@ -23,4 +23,4 @@ redisCommander:
   ports:
     - "8081:8081"
 ```
-Followed by: `fig up`
+Followed by: `docker-compose up`

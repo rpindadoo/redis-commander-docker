@@ -4,13 +4,17 @@
 # http://github.com/tenstartups/redis-commander-docker
 #
 
-FROM tenstartups/alpine:latest
+FROM mhart/alpine-node:4.4.5
 
 MAINTAINER Marc Lennox <marc.lennox@gmail.com>
 
+# Set environment variables.
+ENV \
+  TERM=xterm-color
+
 # Install packages.
 RUN \
-  apk --update add nodejs && \
+  apk --update add bash coreutils curl nano tar wget && \
   rm -rf /var/cache/apk/*
 
 # Install node packages.

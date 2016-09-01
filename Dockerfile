@@ -18,7 +18,7 @@ RUN \
   rm -rf /var/cache/apk/*
 
 # Install node packages.
-RUN npm install -g redis-commander
+RUN npm install -g redis-commander && mkdir -p /root/.redis-commander
 
 # Define the entrypoint script.
 ENTRYPOINT ["redis-commander"]

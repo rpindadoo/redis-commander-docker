@@ -4,7 +4,7 @@
 # http://github.com/tenstartups/redis-commander-docker
 #
 
-FROM mhart/alpine-node:4.4.5
+FROM tenstartups/alpine:latest
 
 MAINTAINER Marc Lennox <marc.lennox@gmail.com>
 
@@ -14,11 +14,12 @@ ENV \
 
 # Install packages.
 RUN \
-  apk --update add bash coreutils curl nano tar wget && \
+  apk --update add nodejs && \
   rm -rf /var/cache/apk/*
 
 # Install node packages.
-RUN npm install -g redis-commander && mkdir -p /root/.redis-commander
+RUN npm install -g redis-commander
+RUN echo '{}' > /root/.redis-commander
 
 # Define the entrypoint script.
 ENTRYPOINT ["redis-commander"]

@@ -4,18 +4,9 @@
 # http://github.com/tenstartups/redis-commander-docker
 #
 
-FROM tenstartups/alpine:latest
+FROM node:alpine
 
 MAINTAINER Marc Lennox <marc.lennox@gmail.com>
-
-# Set environment variables.
-ENV \
-  TERM=xterm-color
-
-# Install packages.
-RUN \
-  apk --update add nodejs && \
-  rm -rf /var/cache/apk/*
 
 # Install node packages.
 RUN npm install -g redis-commander

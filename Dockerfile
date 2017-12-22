@@ -6,7 +6,7 @@
 
 FROM node:alpine
 
-MAINTAINER Marc Lennox <marc.lennox@gmail.com>
+LABEL maintainer="Marc Lennox <marc.lennox@gmail.com>"
 
 # Install node packages.
 RUN npm install -g redis-commander

@@ -1,12 +1,4 @@
-#
-# Redis commander docker image
-#
-# http://github.com/tenstartups/redis-commander-docker
-#
-
 FROM node:alpine
-
-LABEL maintainer="Marc Lennox <marc.lennox@gmail.com>"
 
 # Install node packages.
 RUN npm install -g redis-commander

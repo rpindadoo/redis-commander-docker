@@ -1,4 +1,4 @@
-DOCKER_IMAGE_NAME := tenstartups/redis-commander:latest
+DOCKER_IMAGE_NAME := rpindadoo/redis-commander:latest
 
 build: Dockerfile
 	docker build --file Dockerfile --tag $(DOCKER_IMAGE_NAME) .
